@@ -5,12 +5,15 @@ import './App.css';
 
 const App = () => {
   const [power, setPower] = useState(true);
-  const [bank, setBank] = useState(true);
+  const [bank, setBank] = useState('firstBank');
 
   const togglePower = () => setPower(power => !power);
+  const toggleBank = () => {
+    const nextBank = bank === 'firstBank' ? 'secondBank' : 'firstBank';
+  };
   return (
     <div className="App">
-      <Keypad />
+      <Keypad bank={bank} />
     </div>
   );
 };
