@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Keypad from './components/Keypad';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
 const App = () => {
   const [power, setPower] = useState(true);
@@ -17,9 +17,11 @@ const App = () => {
   };
   return (
     <div className="App">
-      <button onClick={togglePower}>Power</button>
-      <button onClick={toggleBank}>Bank</button>
-      <Keypad bank={bank} power={power} />
+      <div id="drum-machine">
+        <button onClick={togglePower}>Power</button>
+        <button onClick={toggleBank}>Bank</button>
+        <Keypad bank={bank} power={power} />
+      </div>
     </div>
   );
 };

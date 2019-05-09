@@ -1,0 +1,75 @@
+$dark: #212121;
+$primary: rgb(245, 86, 75);
+@import './volume-range';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@mixin center {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+}
+@mixin medium-screen() {
+  @media only screen and (min-width: 600px) {
+    @content;
+  }
+}
+@mixin large-screen() {
+  @media only screen and (min-width: 1300px) {
+    @content;
+  }
+}
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 10px;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+  color: $dark;
+}
+.App {
+  width: 100vw;
+  height: 100vh;
+  grid-gap: 1rem;
+  @include medium-screen {
+    @include center;
+    background: $primary;
+  }
+}
+#drum-machine {
+  @include center;
+  grid-gap: 1rem;
+  @include medium-screen {
+    width: 80vw;
+    height: 60vh;
+    background: white;
+  }
+}
+button {
+  border: none;
+  background: $primary;
+  color: white;
+  padding: 0.4rem;
+}
+.keypad {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 2rem);
+  @include medium-screen {
+    width: 30rem;
+  }
+  width: 100vw;
+  padding: 1rem;
+}
+#display {
+  background: $primary;
+  height: 2rem;
+  width: 6rem;
+  @include center;
+  font-size: 1rem;
+  color: white;
+}
