@@ -1,18 +1,20 @@
-import React, { useEffect, useRef } from 'react';
-const Key = ({ keyItem, bank }) => {
+import React, { useEffect, useRef, useCallback } from 'react';
+const Key = ({ keyItem, bank, power }) => {
   const audioRef = useRef(null);
-  const playAudio = () => {
-    if (audioRef.current) {
-      audioRef.current.play();
+  const playAudio = useCallback(() => {
+    if (power) {
+      if (audioRef.current) {
+        audioRef.current.play();
+      }
     }
-  };
+  });
   useEffect(() => {
     window.addEventListener('keydown', e => {
       if (keyItem.key === e.key) {
         playAudio();
       }
     });
-  }, [bank, keyItem, keyItem.key]);
+  }, [bank, keyItem, keyItem.key, playAudio]);
   return (
     <>
       <audio src={keyItem[bank]} ref={audioRef} />

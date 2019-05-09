@@ -7,13 +7,19 @@ const App = () => {
   const [power, setPower] = useState(true);
   const [bank, setBank] = useState('firstBank');
 
-  const togglePower = () => setPower(power => !power);
+  const togglePower = () => {
+    console.log('power', power);
+    setPower(power => !power);
+  };
   const toggleBank = () => {
     const nextBank = bank === 'firstBank' ? 'secondBank' : 'firstBank';
+    setBank(nextBank);
   };
   return (
     <div className="App">
-      <Keypad bank={bank} />
+      <button onClick={togglePower}>Power</button>
+      <button onClick={toggleBank}>Bank</button>
+      <Keypad bank={bank} power={power} />
     </div>
   );
 };
